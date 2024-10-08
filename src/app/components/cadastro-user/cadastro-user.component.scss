@@ -1,0 +1,172 @@
+
+.input-container {
+    display: flex; /* Usar flexbox para alinhamento horizontal */
+    gap: 20px; /* Espaçamento entre os inputs (pode ajustar conforme necessário) */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+}
+input:disabled {
+    opacity: 0.5; /* Para deixar o campo com aparência de desabilitado */
+}
+
+
+.input-box {
+    flex: 1; /* Faz os campos ocuparem o mesmo espaço */
+}
+
+label {
+    margin-right: 10px; /* Espaçamento entre o label e o input */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-light-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    background-color: var(--color-light-50);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+aside {
+    width: 60%;
+    background-color: #92bbb8;
+    display: flex;
+    justify-content: center;
+}
+
+aside img {
+    max-width: 60%;
+}
+
+main {
+    width: 60%;
+    padding: 60px 40px 40px;
+    background-color: white;
+}
+
+h1 {
+    font-size: 2.0rem;
+    margin-bottom: 50px;
+}
+
+/* Estilizar os radio buttons e seus labels */
+.radio-group {
+    display: flex;
+    margin-bottom: 50px; /* Espaço inferior entre os radios e o restante do formulário */
+}
+
+.radio-group .input-box {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group .input-box input{
+    width: 10%;
+    margin: 0;
+    padding: 0;
+}
+
+label {
+    white-space: nowrap; /* Evitar quebra de linha no texto do label */
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input-box {
+    flex: 1;
+    min-width: 220px;
+}
+
+label {
+    font-size: 14px;
+    color: var(--color-dark-50);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-light-150);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--color-dark-100);
+    background-color: #f9f9f9;
+}
+
+input:disabled {
+    background-color: #e0e0e0; /* Escurecer o campo desabilitado */
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #92bbb8;
+    color: white;
+    margin-top: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    scale: 1.02;    
+}
+
+/* ================== Responsividade ====================== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin-top: 270px;
+    }
+
+    aside {
+        width: 100%;
+        height: 200px;
+    }
+
+    main {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* Estilização das mensagens temporárias na tela de cadastro*/
+#message {
+    display: none; /* Inicialmente oculta */
+    position: fixed; /* Fixa no topo da tela */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    z-index: 1000; /* Garante que fique por cima de outros elementos */
+}
+
+#message.success {
+    background-color: #e7f3ea; /* Fundo verde claro */
+    color: #155724; /* Texto verde escuro */
+}
+
+#message.error {
+    background-color: #f8d7da; /* Fundo vermelho claro */
+    color: #721c24; /* Texto vermelho escuro */
+}

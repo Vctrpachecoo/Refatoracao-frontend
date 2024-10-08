@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="/assets/img/nav_left_feather.svg" alt="Teste">
+                <span>MENTECONECTA</span>
+            </div>
+            <div>
+                <ul class="navbar-links">
+                    <li>
+                        <a routerLink="/cadastro">Cadastre-se</a>
+                    </li>
+                    <li>
+                        <!--javascript:void(0) evita a navegação padrão e permite que o Angular gerencie o clique.-->
+                        <!--O método scrollToSection usa o JavaScript para encontrar o elemento com o ID about e rolar suavemente até ele.-->
+                        <a href="javascript:void(0)" (click)="scrollToSection('about')">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" (click)="scrollToSection('contact')">Fale conosco</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-button">
+                <button class="btn-default"><a href="./Pages/LoginUsuario.html">Login</a></button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="content">
+        <section id="home">
+             <a routerLink="/cadastro" routerLinkActive="router-link-active" >
+                <div class="sign_up">
+                    <img src="./assets/img/undraw_welcome_re_h3d9.svg" alt="">Cadastre-se</div>
+            </a> 
+            <div class="features">
+                <ul>
+                    <li>Conectar Psicólogos e pacientes</li>
+                    <li>Respiração Guiada</li>
+                    <li>Mensagens Motivacionais</li>
+                    <li>Conscientização Sobre Ansiedade</li>
+                    <li>Contatos de Ongs e CVV</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="about-title">
+                <br>
+                <br>
+                <br>
+                <h2>Sobre nós</h2>
+            </div> 
+
+            <div class="about-content">
+                <p>A plataforma "MenteConecta" foi criada para ser um refúgio para aqueles que enfrentam a ansiedade,
+                    oferecendo um espaço onde você pode encontrar apoio, conforto e recursos para lidar com os desafios
+                    do
+                    dia a dia. Aqui, você não está sozinho. Nossa plataforma oferece orientações baseadas em estudos
+                    sobre
+                    ansiedade, exercícios de respiração guiada para ajudar a acalmar a mente, e mensagens motivacionais
+                    para
+                    inspirar e encorajar. Sabemos que, às vezes, o caminho pode parecer solitário, por isso facilitamos
+                    o
+                    contato com psicólogos voluntários que estão prontos para escutar e ajudar. Estamos aqui para
+                    caminhar
+                    ao seu lado.</p>
+
+                <img src="./assets/img/undraw_connection_re_lcud.svg" alt="Ilustração de pessoas se conectando"> 
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div id="footer_items">
+            <div class="footer-center">
+                <div class="footer-logo-social">
+                    <span><img src="./assets/img/nav_left_feather.svg" alt="Logo MenteConecta">MENTECONECTA</span>
+                    <div class="social-media-buttons">
+                        <a href="">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-separator"></div> <!-- Barra preta separadora -->
+
+                <div class="footer-address">
+                    <h5>Endereço</h5>
+                    <p>
+                        <i class="fa-solid fa-location-dot" style="color: #000000;"></i> Santo André, São Paulo, Brasil
+                    </p>
+                    <p>
+                        <a href="mailto:nossoemail@gmail.com.br">
+                            <i class="fa-solid fa-envelope" style="color: #000000;"></i> nossoemailgmail.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer_copyright">
+            <span>&copy; MenteConecta Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

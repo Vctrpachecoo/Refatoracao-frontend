@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Psicólogo</title>
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <img src="/assets/img/undraw_join_re_w1lh.svg" alt="Imagem Descritiva">
+        </aside>
+
+        <main>
+
+            <app-mensage></app-mensage>
+            
+            <form #cadastroForm="ngForm" (ngSubmit)="onSubmit(cadastroForm)">
+                <!-- Título do formulário -->
+                <h1>Criar nova conta</h1>
+
+                 <!-- Grupo de rádio para selecionar se o usuário é paciente ou psicólogo -->
+                <div class="radio-group" required>
+                    <div class="input-box">
+                        <label>
+                            <input type="radio" name="tipo" (change)="onTipoChange('paciente')" [(ngModel)]="tipo" value="paciente" checked>
+                            Paciente
+                        </label>
+                    </div>
+                    <!-- Opção Psicólogo -->
+                    <div class="input-box">
+                        <label>
+                            <input type="radio" name="tipo" (change)="onTipoChange('psicologo')" [(ngModel)]="tipo" value="psicologo">
+                            Psicólogo
+                        </label>
+                    </div>
+                </div>
+
+
+                 <!-- Grupo de inputs para o nome completo e email -->
+                <div class="input-group">
+                     <!-- Campo para o nome completo -->
+                    <div class="input-box">
+                        <label for="cadastro_1_nome">Nome Completo</label>
+                        <input 
+                            type="text" 
+                            name="nome_completo" 
+                            id="cadastro_1_nome" 
+                            [(ngModel)]="nome_completo" 
+                            placeholder="Digite seu nome completo" 
+                            required
+                        >
+                    </div>
+
+                    <!-- Campo para o e-mail -->
+                    <div class="input-box">
+                        <label for="cadastro_1_email">E-mail</label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="cadastro_1_email" 
+                            [(ngModel)]="email" 
+                            placeholder="Digite o e-mail" 
+                            required
+                        >
+                    </div>
+
+                     <!-- Campos para CRP e Especialidade, habilitados apenas se o tipo for 'psicólogo' -->
+                    <div class="input-container">
+                        <div class="input-box">
+                            <label for="cadastro_1_crp">CRP:</label>
+                            <input 
+                                id="cadastro_1_crp" 
+                                [(ngModel)]="crp" 
+                                name="crp"  
+                                [disabled]="tipo === 'paciente'" 
+                                [style.backgroundColor]="tipo === 'paciente' ? '#e0e0e0' : ''"
+                            />
+                        </div>
+                    
+                        <div class="input-box">
+                            <label for="cadastro_1_especialidade">Especialidade:</label>
+                            <input 
+                                id="cadastro_1_especialidade" 
+                                [(ngModel)]="especialidade" 
+                                name="especialidade"  
+                                [disabled]="tipo === 'paciente'" 
+                                [style.backgroundColor]="tipo === 'paciente' ? '#e0e0e0' : ''"
+                            />
+                        </div>
+                    </div>
+
+
+                    
+                     <!-- Campo para senha -->
+                    <div class="input-box">
+                        <label for="cadastro_1_password">Senha</label>
+                        <input 
+                            type="password" 
+                            name="senha" 
+                            id="cadastro_1_password" 
+                            [(ngModel)]="senha" 
+                            placeholder="Digite a senha" 
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Campo para confirmar senha -->
+                    <div class="input-box">
+                        <label for="cadastro_1_confirm">Confirme a senha</label>
+                        <input 
+                            type="password" 
+                            name="confirmaSenha" 
+                            id="cadastro_1_confirm" 
+                            [(ngModel)]="confirmaSenha" 
+                            placeholder="Digite a senha" 
+                            required
+                        >
+                    </div>
+                </div>
+
+                
+                <!-- Botão de envio -->
+                <button type="submit" id="cadastro_1_button">Cadastrar</button>
+            </form>
+
+            <div id="message" class="message"></div>
+        </main>
+    </div>
+</body>
+</html>
+
