@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <img src="/assets/img/undraw_login_re_4vu2.svg" alt="Imagem Descritiva">
+        </aside>
+    
+        <main>
+           
+            <app-mensagelogin></app-mensagelogin>
+            
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h1>Login</h1>
+            
+                <label for="login_email">E-mail</label>
+                <div class="input-container">
+                    <input type="email" id="login_email" formControlName="email" required>
+                    <!-- Exibir erro se o campo de e-mail for inválido -->
+                    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                        <small *ngIf="loginForm.get('email')?.errors?.['required']">O campo e-mail é obrigatório.</small>
+                        <small *ngIf="loginForm.get('email')?.errors?.['email']">O e-mail não é válido.</small>
+                    </div>
+                </div>
+            
+                <label for="login_password">Senha</label>
+                <div class="input-container">
+                    <input type="password" id="login_password" formControlName="senha" required>
+                    <!-- Exibir erro se o campo de senha for inválido -->
+                    <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched">
+                        <small>O campo senha é obrigatório.</small>
+                    </div>
+                </div>
+            
+                <a href="#">Esqueceu sua senha?</a>
+                <button type="submit" id="login_button" [disabled]="loginForm.invalid">Login</button>
+            </form>
+            
+            
+            <footer>
+                Não possui cadastro? <a routerLink="/cadastro">Cadastre-se aqui!</a><br>
+                Esqueceu a Senha? <a routerLink="/redefinir-senha">Redefina aqui!</a><br>
+            </footer>
+        </main>
+    </div>
+    
+
+</body>
+
+</html>

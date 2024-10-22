@@ -9,9 +9,12 @@ import { Routes } from '@angular/router';
 import { CadastroUserComponent } from './components/cadastro-user/cadastro-user.component';  // Ajuste conforme o caminho
 // Importa o componente home, que será utilizado em outra rota
 import { HomeComponent } from './components/home/home.component';  // Ajuste conforme o caminho
+import { LoginComponent } from './components/login/login.component';
 
 // Exporta as rotas configuradas para serem usadas no roteamento da aplicação
 export const routes: Routes = [
+  //Rota para a página de login de usuários
+  { path: 'login', component: LoginComponent},
   // Rota para a página de cadastro de usuários
   { path: 'cadastro', component: CadastroUserComponent },
   // Rota para a página inicial (home)
