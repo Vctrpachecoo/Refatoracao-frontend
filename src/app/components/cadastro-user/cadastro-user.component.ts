@@ -1,23 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CadastroUserService} from '../../services/CadastroUserService/cadastro-user-service.service';
+import { CadastroUserService } from '../../services/CadastroUserService/cadastro-user-service.service';
 import { NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { mensageComponent } from  '../mensageCadastro/mensage.component';
+import { mensageComponent } from '../mensageCadastro/mensage.component';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-user',
-  standalone: true, 
-  imports: [FormsModule, RouterModule, mensageComponent, CommonModule], 
-  templateUrl: './cadastro-user.component.html', 
-  styleUrls: ['./cadastro-user.component.scss']  
+  standalone: true,
+  imports: [FormsModule, RouterModule, mensageComponent, CommonModule],
+  templateUrl: './cadastro-user.component.html',
+  styleUrls: ['./cadastro-user.component.scss']
 })
 export class CadastroUserComponent {
 
   // Referência ao componente de mensagem para exibir notificações de sucesso/erro
-  @ViewChild(mensageComponent) notification!: mensageComponent; 
-  
+  @ViewChild(mensageComponent) notification!: mensageComponent;
 
   // Propriedades que correspondem aos campos do formulário
   tipo: string = 'paciente';  // O tipo de usuário, por padrão 'paciente'
@@ -28,8 +28,8 @@ export class CadastroUserComponent {
   senha: string = '';  // Senha do usuário
   confirmaSenha: string = '';  // Confirmação da senha
 
-  // Injetando o serviço de cadastro
-  constructor(private cadastroService: CadastroUserService) {}
+  // Injetando o serviço de cadastro e o roteador
+  constructor(private cadastroService: CadastroUserService, private router: Router) {}
 
   // Função chamada ao submeter o formulário
   onSubmit(form: NgForm) {
@@ -51,6 +51,11 @@ export class CadastroUserComponent {
           console.log('Cadastro realizado com sucesso!', response);
           // Exibe uma mensagem de sucesso (mensageCadastro)
           this.notification.show('Cadastro realizado com sucesso!', 'success');
+          
+          // Atraso de 2 segundos para exibir a mensagem antes de redirecionar
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);  // 2 segundos de atraso
         },
         error => {
           console.error('Erro ao cadastrar', error);
