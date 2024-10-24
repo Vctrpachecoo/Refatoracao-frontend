@@ -3,16 +3,14 @@ import { RouterModule } from '@angular/router';  // Importação necessária par
 
 @Component({
   selector: 'app-home',
-  standalone: true,  // Indica que este é um componente standalone
-  imports: [RouterModule],  // Adiciona o RouterModule para habilitar o routerLink
+  standalone: true,  
+  imports: [RouterModule],  
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  // Lógica do componente
 
-
-  // Função que rola para a sessão de sobre 
+  // Função que realiza o scroll para a sessão de sobre na mesma pág 
   scrollToSection(sectionId: string) {
     const section = document.getElementById(sectionId);
     if (section) {

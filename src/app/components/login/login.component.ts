@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../services/login-service.service'; // Importando o AuthService
+import { LoginService } from '../../services/LoginUserService/login-service.service'; // Importando a service 
 import { Router } from '@angular/router'; // Para redirecionar após o login
 import { MensageloginComponent } from '../mensagelogin/mensagelogin.component';
 
@@ -19,7 +19,7 @@ export class LoginComponent {
 
   @ViewChild(MensageloginComponent) notification!: MensageloginComponent;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router) {
     // Inicializando o FormGroup com os campos e validações
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,7 +31,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, senha } = this.loginForm.value;
 
-      this.authService.login(email, senha).subscribe({
+      this.loginService.login(email, senha).subscribe({
         next: (response) => {
           // Exibe mensagem de sucesso
           if (this.notification) {
@@ -40,7 +40,7 @@ export class LoginComponent {
 
           // Adiciona um atraso antes do redirecionamento
           setTimeout(() => {
-            this.router.navigate(['/home']);  // Redireciona para a home page após 3 segundos
+            this.router.navigate(['/home']);  // Redireciona para a pagina designada após 3 seg 
           }, 3000);  // 3000 milissegundos = 3 segundos
         },
         error: (error) => {

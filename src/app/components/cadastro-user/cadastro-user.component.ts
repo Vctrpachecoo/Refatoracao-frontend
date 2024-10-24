@@ -1,22 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CadastroUserServiceService } from '../../services/cadastro-user-service.service';
+import { CadastroUserService} from '../../services/CadastroUserService/cadastro-user-service.service';
 import { NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { mensageComponent } from  '../mensage/mensage.component';
+import { mensageComponent } from  '../mensageCadastro/mensage.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro-user',
-  standalone: true, // O componente é standalone (não faz parte de um módulo convencional)
-  imports: [FormsModule, RouterModule, mensageComponent, CommonModule], // Importações necessárias
-  templateUrl: './cadastro-user.component.html', // Localização do template HTML
-  styleUrls: ['./cadastro-user.component.scss']  // Estilos associados ao componente
+  standalone: true, 
+  imports: [FormsModule, RouterModule, mensageComponent, CommonModule], 
+  templateUrl: './cadastro-user.component.html', 
+  styleUrls: ['./cadastro-user.component.scss']  
 })
 export class CadastroUserComponent {
 
-  @ViewChild(mensageComponent) notification!: mensageComponent; 
   // Referência ao componente de mensagem para exibir notificações de sucesso/erro
+  @ViewChild(mensageComponent) notification!: mensageComponent; 
+  
 
   // Propriedades que correspondem aos campos do formulário
   tipo: string = 'paciente';  // O tipo de usuário, por padrão 'paciente'
@@ -28,7 +29,7 @@ export class CadastroUserComponent {
   confirmaSenha: string = '';  // Confirmação da senha
 
   // Injetando o serviço de cadastro
-  constructor(private cadastroService: CadastroUserServiceService) {}
+  constructor(private cadastroService: CadastroUserService) {}
 
   // Função chamada ao submeter o formulário
   onSubmit(form: NgForm) {
@@ -48,12 +49,12 @@ export class CadastroUserComponent {
       this.cadastroService.cadastrarUsuario(dados).subscribe(
         response => {
           console.log('Cadastro realizado com sucesso!', response);
-          // Exibe uma mensagem de sucesso usando o mensageComponent
+          // Exibe uma mensagem de sucesso (mensageCadastro)
           this.notification.show('Cadastro realizado com sucesso!', 'success');
         },
         error => {
           console.error('Erro ao cadastrar', error);
-          // Exibe uma mensagem de erro usando o mensageComponent
+          // Exibe uma mensagem de erro usando o (mensageCadastro)
           this.notification.show('Erro ao cadastrar. Tente novamente.', 'error');
         }
       );
